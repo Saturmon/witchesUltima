@@ -5,32 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : Personaje
 {
+    public GameObject GameObject;
     private void Awake()
     {
+
     }
 
     private void Start()
     {
-        _name = "Asesino sin sueldo";
-        _life = 190;
-        _maxLife = 190;
-        _damageBase = 70;
-        _armor = 32;
-        _additionalDamage = 0;
-        _vampirism = 0;
-        _shieldbreaker = 0;
+        _name = "El espiritu";
+        _life = 160;
     }
 
     private void Update()
     {
 
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Jugador")
+        if (collision.CompareTag("Jugador"))
         {
-            SceneManager.LoadScene("");
+            if (Input.GetKey("e"))
+            {
+                GameObject.SetActive(true);
+            }
         }
+        
     }
 }
